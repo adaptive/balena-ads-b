@@ -211,7 +211,6 @@ services:
     build: ./adsbexchange-feed
     image: adsbexchange-feed
     restart: always
-
   # adsbexchange-mlat:
   #   depends_on:
   #     - dump1090-fa
@@ -225,4 +224,16 @@ services:
   #     - RECEIVER_HOST=dump1090-fa
   #     - RECEIVER_PORT=30005
   #     - ADSBEXCHANGE_RECEIVER_NAME=
+  
+  wingbits:
+    depends_on:
+      - dump1090-fa
+    build: ./wingbits
+    image: wingbits
+    restart: always
+    environment:
+      - WINGBITS_DEVICE_ID=
+    expose:
+      - '30154'
+
     
